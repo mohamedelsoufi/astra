@@ -30,6 +30,15 @@
 
     </div>
     <div class="row">
+        <div class="row">
+            <div class="col">
+                <a class="my-5 btn btn-outline-success" href="{{route('matchResults')}}" style="text-decoration: none">match Results</a>
+            </div>
+
+            <div class="col">
+                <a class="my-5 btn btn-outline-success" href="{{route('match')}}" style="text-decoration: none">Home</a>
+            </div>
+        </div>
         @yield('content')
     </div>
 </div>

@@ -13,8 +13,8 @@ class MainDataSeeder extends Seeder
      */
     public function run(): void
     {
-        MainData::create(['description' => 'Sample Main Data 1']);
-        MainData::create(['description' => 'Sample Main Data 2']);
+        MainData::create(['description' => 'same desc']);
+        MainData::create(['description' => 'نص2']);
         MainData::create(['description' => 'Sample Main Data 3']);
     }
 }

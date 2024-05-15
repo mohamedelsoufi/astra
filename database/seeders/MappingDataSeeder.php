@@ -13,8 +13,8 @@ class MappingDataSeeder extends Seeder
      */
     public function run(): void
     {
-        MappingData::create(['description' => 'Mapping Data 1', 'main_data_id' => 1, 'condition_reason' => 'A']);
-        MappingData::create(['description' => 'Mapping Data 2', 'main_data_id' => 2, 'condition_reason' => 'B']);
-        MappingData::create(['description' => 'Mapping Data 3', 'main_data_id' => 3, 'condition_reason' => 'C']);
+        MappingData::create(['description' => 'نص2', 'main_data_id' => 1, 'condition_reason' => 'A']);
+        MappingData::create(['description' => 'same desc', 'main_data_id' => 2, 'condition_reason' => 'B']);
+        MappingData::create(['description' => 'نص', 'main_data_id' => 3, 'condition_reason' => 'C']);
     }
 }

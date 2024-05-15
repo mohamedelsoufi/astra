@@ -56,6 +56,7 @@ class DataController extends Controller
                 'matching_result' => $matchingResult,
             ];
         }
+//        return $results;
 
         return view('match-results', compact('results'));
     }
@@ -87,7 +88,7 @@ class DataController extends Controller
 
     private function findMapping($description)
     {
-        $mappingData = $this->matchingData->all();
+       $mappingData = $this->matchingData->all();
 
         foreach ($mappingData as $map) {
             if (stripos($description, $map->description) !== false) {

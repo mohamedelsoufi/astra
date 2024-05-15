@@ -16,8 +16,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-         MainData::factory(10)->create();
-         MappingData::factory(10)->create();
-         $this->call(MatchingDataSeeder::class);
+//         MainData::factory(10)->create();
+//         MappingData::factory(10)->create();
+         $this->call([
+             MainDataSeeder::class,
+             MappingDataSeeder::class,
+             MatchingDataSeeder::class,
+         ]);
     }
 }
