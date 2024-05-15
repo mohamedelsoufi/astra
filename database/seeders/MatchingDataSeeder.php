@@ -19,18 +19,30 @@ class MatchingDataSeeder extends Seeder
         ]);
         MatchingData::create([
             'arabic_description' => 'Sample Arabic 2',
-            'english_description' => 'Sample English 2',
-            'latin_description' => 'Sample Latin 2'
+            'english_description' => 'same desc',
+            'latin_description' => 'Latin'
         ]);
         MatchingData::create([
             'arabic_description' => 'نص',
-            'english_description' => 'Sample English 3',
+            'english_description' => 'same desc',
             'latin_description' => 'Sample Latin 3'
         ]);
         MatchingData::create([
             'arabic_description' => 'نص2',
-            'english_description' => 'Sample English 3',
+            'english_description' => 'same desc',
+            'latin_description' => 'Latin'
+        ]);
+
+        MatchingData::create([
+            'arabic_description' => 'نص تجريبي',
+            'english_description' => 'same desc 22',
             'latin_description' => 'Sample Latin 3'
+        ]);
+
+        MatchingData::create([
+            'arabic_description' => 'لوريم إيبسوم',
+            'english_description' => 'lorem aliqu',
+            'latin_description' => 'Latin'
         ]);
     }
 }

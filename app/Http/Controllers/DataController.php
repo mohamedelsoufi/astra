@@ -88,12 +88,13 @@ class DataController extends Controller
 
     private function findMapping($description)
     {
-       $mappingData = $this->matchingData->all();
+        $mappingData = $this->mappingData->all();
 
         foreach ($mappingData as $map) {
             if (stripos($description, $map->description) !== false) {
                 return [
                     'mapping_data_id' => $map->id,
+                    'description' => $map->description,
                     'main_data_id' => $map->main_data_id,
                     'condition_reason' => $map->condition_reason,
                 ];
@@ -103,6 +104,7 @@ class DataController extends Controller
         return null;
     }
 
+
     private function getMatchingResult($matchCount)
     {
         switch ($matchCount) {
@@ -110,6 +112,8 @@ class DataController extends Controller
                 return 'Full match (3 out of 3)';
             case 2:
                 return '2 out of 3 match';
+            case 1:
+                return '1 out of 3 match';
             default:
                 return 'No matching at all';
         }

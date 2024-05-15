@@ -22,17 +22,18 @@
             </div>
         @endif
 
-            @if(Session::has('error'))
-                <div class="alert alert-danger" role="alert">
-                    {{ Session::get('error') }}
-                </div>
-            @endif
+        @if(Session::has('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ Session::get('error') }}
+            </div>
+        @endif
 
     </div>
     <div class="row">
         <div class="row">
             <div class="col">
-                <a class="my-5 btn btn-outline-success" href="{{route('matchResults')}}" style="text-decoration: none">match Results</a>
+                <a class="my-5 btn btn-outline-success" href="{{route('matchResults')}}" style="text-decoration: none">match
+                    Results</a>
             </div>
 
             <div class="col">
