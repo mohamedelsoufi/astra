@@ -12,16 +12,8 @@ class MatchingDataSeeder extends Seeder
      */
     public function run(): void
     {
-        $arabic = ['نص تجريبي1', 'نص تجريبي2', 'نص تجريبي3', 'نص تجريبي4', 'نص تجريبي5'];
-        $english = ['demo text 1', 'demo text 2', 'demo text 3', 'demo text 4', 'demo text 5'];
-        $latin = ['latin demo text 1', 'latin demo text 2', 'latin demo text 3', 'latin demo text 4', 'latin demo text 5'];
-
-        for ($m = 0; $m < count($arabic); $m++) {
-            MatchingData::create([
-                'arabic_description' => $arabic[$m],
-                'english_description' => $english[$m],
-                'latin_description' => $latin[$m],
-            ]);
-        }
+        MatchingData::create(['arabic_description' => 'Sample Arabic 1', 'english_description' => 'Sample English 1', 'latin_description' => 'Sample Latin 1']);
+        MatchingData::create(['arabic_description' => 'Sample Arabic 2', 'english_description' => 'Sample English 2', 'latin_description' => 'Sample Latin 2']);
+        MatchingData::create(['arabic_description' => 'Sample Arabic 3', 'english_description' => 'Sample English 3', 'latin_description' => 'Sample Latin 3']);
     }
 }
