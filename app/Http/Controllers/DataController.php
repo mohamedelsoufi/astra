@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\FullMAtchResultExport;
 use App\Models\MainData;
 use App\Models\MappingData;
 use App\Models\MatchingData;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DataController extends Controller
 {
@@ -117,5 +119,60 @@ class DataController extends Controller
             default:
                 return 'No matching at all';
         }
+    }
+
+    public function extractFullMatch()
+    {
+        $matchingData = $this->matchingData->all();
+        $results = [];
+
+        foreach ($matchingData as $data) {
+            $arabicMatch = $this->findMapping($data->arabic_description);
+            $englishMatch = $this->findMapping($data->english_description);
+            $latinMatch = $this->findMapping($data->latin_description);
+
+            $matchCount = ($arabicMatch ? 1 : 0) + ($englishMatch ? 1 : 0) + ($latinMatch ? 1 : 0);
+            $matchingResult = $this->getMatchingResult($matchCount);
+            if ($arabicMatch && $englishMatch && $latinMatch) {
+                $results[] = [
+                    'id' => $data->id,
+                    'arabic' => $arabicMatch,
+                    'english' => $englishMatch,
+                    'latin' => $latinMatch,
+                    'matching_result' => $matchingResult,
+                ];
+
+            }
+        }
+        return Excel::download(new FullMAtchResultExport($results), 'results.xlsx');
+    }
+
+    // Insert not matched
+    public function insertNotMatched()
+    {
+        $matchingData = $this->matchingData->all();
+
+        foreach ($matchingData as $data) {
+            $arabicMatch = $this->findMapping($data->arabic_description);
+            $englishMatch = $this->findMapping($data->english_description);
+            $latinMatch = $this->findMapping($data->latin_description);
+            if (!$arabicMatch) {
+                $this->mappingData->create([
+                    'description' => $data->arabic_description,
+                ]);
+            }
+            if (!$englishMatch) {
+                $this->mappingData->create([
+                    'description' => $data->english_description,
+                ]);
+            }
+            if (!$latinMatch) {
+                $this->mappingData->create([
+                    'description' => $data->latin_description,
+                ]);
+            }
+        }
+
+        return redirect()->back()->with(['success' => 'Data Inserted Successfully']);
     }
 }

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('mapping_data', function (Blueprint $table) {
             $table->id();
             $table->text('description');
-            $table->unsignedInteger('main_data_id');
-            $table->enum('condition_reason', ['A', 'B', 'C']);
+            $table->unsignedInteger('main_data_id')->nullable();
+            $table->enum('condition_reason', ['A', 'B', 'C'])->nullable();
             $table->timestamps();
         });
     }

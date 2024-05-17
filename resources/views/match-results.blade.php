@@ -3,6 +3,16 @@
 @section('content')
     <h1 class="mb-5">Matching Results</h1>
 
+    <div class="row my-5">
+        <div class="col-md-4">
+            <a href="{{route('extractMatchResults')}}" class="btn btn-outline-info">Extract Matches</a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="{{route('insertNotMatched')}}" class="btn btn-outline-warning">Insert Not Matched</a>
+        </div>
+    </div>
+
     @if(!$results)
         <div class="alert alert-danger text-center" role="alert">
             There were no matching results

@@ -16,20 +16,6 @@
 <body class="font-sans antialiased dark:bg-black dark:text-white/50">
 <div class="container">
     <div class="row">
-        @if(Session::has('success'))
-            <div class="alert alert-success" role="alert">
-                {{ Session::get('success') }}
-            </div>
-        @endif
-
-        @if(Session::has('error'))
-            <div class="alert alert-danger" role="alert">
-                {{ Session::get('error') }}
-            </div>
-        @endif
-
-    </div>
-    <div class="row">
         <div class="row">
             <div class="col">
                 <a class="my-5 btn btn-outline-success" href="{{route('matchResults')}}" style="text-decoration: none">match
@@ -39,6 +25,22 @@
             <div class="col">
                 <a class="my-5 btn btn-outline-success" href="{{route('match')}}" style="text-decoration: none">Home</a>
             </div>
+        </div>
+
+        <div class="row">
+            @if(Session::has('success'))
+                <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                    {{ Session::get('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
+                @if(Session::has('error'))
+                    <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                        {{ Session::get('error') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
         </div>
         @yield('content')
     </div>
