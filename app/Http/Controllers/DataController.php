@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Exports\FullMAtchResultExport;
+use App\Http\Requests\ImportDataRequest;
+use App\Imports\DataImport;
 use App\Models\MainData;
 use App\Models\MappingData;
 use App\Models\MatchingData;
@@ -174,5 +176,18 @@ class DataController extends Controller
         }
 
         return redirect()->back()->with(['success' => 'Data Inserted Successfully']);
+    }
+
+    public function importData(ImportDataRequest $request)
+    {
+        try {
+//            return $request;
+            Excel::import(new DataImport(), $request->data);
+
+            return redirect()->back()->with(['success' => 'Data Imported Successfully']);
+        } catch (\Exception $e) {
+            return redirect()->back()->with(['error' => $e->getMessage()]);
+            return redirect()->back()->with(['error' => 'Something went wrong!']);
+        }
     }
 }

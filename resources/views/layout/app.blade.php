@@ -17,13 +17,34 @@
 <div class="container">
     <div class="row">
         <div class="row">
-            <div class="col">
+            <div class="col-md-4">
+                <a class="my-5 btn btn-outline-success" href="{{route('match')}}" style="text-decoration: none">Home</a>
+            </div>
+
+            <div class="col-md-4">
                 <a class="my-5 btn btn-outline-success" href="{{route('matchResults')}}" style="text-decoration: none">match
                     Results</a>
             </div>
 
-            <div class="col">
-                <a class="my-5 btn btn-outline-success" href="{{route('match')}}" style="text-decoration: none">Home</a>
+            <div class="col-md-4">
+                <form action="{{route('importData')}}" method="POST" class="my-5" enctype="multipart/form-data">
+                    @csrf
+                    @method('post')
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="file" name="data"
+                                   class="form-control form-control-sm @error('data') is-invalid @enderror" accept="application/vnd.ms-excel,.xlsx" />
+                            @error('data')
+                            <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                            @enderror
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-outline-success" type="submit">Import Data</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
 
